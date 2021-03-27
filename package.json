@@ -1,0 +1,27 @@
+{
+  "name": "eslint-plugin-vue-no-this-in-before-route-enter",
+  "version": "0.0.0",
+  "description": "Don't use \"this\" i a beforeRouteEnter method",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": "Przemyslaw Jan Beigert",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha tests --recursive"
+  },
+  "dependencies": {
+    "requireindex": "~1.1.0",
+    "vue-eslint-parser": "^7.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0",
+    "mocha": "^8.3.2"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "ISC"
+}
