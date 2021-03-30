@@ -21,12 +21,7 @@ const ruleTester = new RuleTester({
     parserOptions: { ecmaVersion: 2020, sourceType: 'module' }
 })
 ruleTester.run("no-this-in-before-route-enter", rule, {
-
-    valid: [
-
-        // give me some code that won't trigger a warning
-    ],
-
+    valid: [],
     invalid: [
         {
             code: `
@@ -85,6 +80,35 @@ p {
             errors: [{
                 message: rule.errorMessage,
             }]
-        }
+        },
+//         {
+//             code: `
+// <template>
+//   <p>{{ greeting }} World!</p>
+// </template>
+//
+// <script>
+// export default {
+//   data () {
+//     return {
+//       greeting: "Hello"
+//     };
+//   },
+//   beforeRouteEnter() {
+//     this.attr = this.method();
+//   }
+// };
+// </script>
+//
+// <style scoped>
+// p {
+//   font-size: 2em;
+//   text-align: center;
+// }
+// </style>`,
+//             errors: [{
+//                 // message: rule.errorMessage,
+//             }]
+//         }
     ]
 });
