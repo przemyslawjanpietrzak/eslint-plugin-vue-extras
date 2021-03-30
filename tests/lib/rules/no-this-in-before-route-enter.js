@@ -16,44 +16,7 @@ var RuleTester = require("eslint").RuleTester;
 // Tests
 //------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({
-    parser: require.resolve('vue-eslint-parser'),
-    parserOptions: { ecmaVersion: 2020, sourceType: 'module' }
-})
-ruleTester.run("no-this-in-before-route-enter", rule, {
-    valid: [],
-    invalid: [
-        {
-            code: `
-<template>
-  <p>{{ greeting }} World!</p>
-</template>
-
-<script>
-export default {
-  data () {
-    return {
-      greeting: "Hello"
-    };
-  },
-  beforeRouteEnter: function() {
-    this.xxx();
-  }
-};
-</script>
-
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
-</style>`,
-            errors: [{
-                message: rule.errorMessage,
-            }]
-        },
-        {
-            code: `
+const template = beforeRouteEnter => `
 <template>
   <p>{{ greeting }} World!</p>
 </template>
@@ -66,7 +29,7 @@ export default {
     };
   },
   beforeRouteEnter() {
-    this.xxx();
+      ${beforeRouteEnter}
   }
 };
 </script>
@@ -76,39 +39,93 @@ p {
   font-size: 2em;
   text-align: center;
 }
-</style>`,
+</style>
+`;
+
+const functionTemplate = beforeRouteEnter => `
+<template>
+  <p>{{ greeting }} World!</p>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      greeting: "Hello"
+    };
+  },
+  beforeRouteEnter: function() {
+      ${beforeRouteEnter}
+  }
+};
+</script>
+`;
+
+const ruleTester = new RuleTester({
+    parser: require.resolve('vue-eslint-parser'),
+    parserOptions: { ecmaVersion: 2020, sourceType: 'module' }
+})
+ruleTester.run("no-this-in-before-route-enter", rule, {
+    valid: [
+        template(''),
+        template('const variable = 42;'),
+        template('someFunction(42)'),
+        `
+<template>
+  <p>{{ greeting }} World!</p>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      greeting: "Hello"
+    };
+  },
+};        
+        `
+    ],
+    invalid: [
+        {
+            code: template(`this.xxx();`),
             errors: [{
                 message: rule.errorMessage,
             }]
         },
-//         {
-//             code: `
-// <template>
-//   <p>{{ greeting }} World!</p>
-// </template>
-//
-// <script>
-// export default {
-//   data () {
-//     return {
-//       greeting: "Hello"
-//     };
-//   },
-//   beforeRouteEnter() {
-//     this.attr = this.method();
-//   }
-// };
-// </script>
-//
-// <style scoped>
-// p {
-//   font-size: 2em;
-//   text-align: center;
-// }
-// </style>`,
-//             errors: [{
-//                 // message: rule.errorMessage,
-//             }]
-//         }
+        {
+            code: functionTemplate('this.method();'),
+            errors: [{
+                message: rule.errorMessage,
+            }]
+        },
+        {
+            code: template('this.attr = this.method();'),
+            errors: [{
+                message: rule.errorMessage,
+            }]
+        },
+        {
+            code: functionTemplate('this.attr = this.method();'),
+            errors: [{
+                message: rule.errorMessage,
+            }]
+        },
+        {
+            code: functionTemplate(`
+                if (this.method()) {}
+            `),
+            errors: [{
+                message: rule.errorMessage,
+            }],
+
+        },
+        {
+            code: functionTemplate(`
+                if (true) { this.method(); }
+            `),
+            errors: [{
+                message: rule.errorMessage,
+            }]
+        }
     ]
 });

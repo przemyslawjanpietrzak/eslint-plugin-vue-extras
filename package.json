@@ -1,7 +1,8 @@
 {
-  "name": "eslint-plugin-vue-no-this-in-before-route-enter",
+  "name": "vue-eslint-exras-plugin",
+  "author": "Przemyslaw Jan Begiert",
   "version": "0.0.0",
-  "description": "Don't use \"this\" i a beforeRouteEnter method",
+  "description": "Vue eslint extras plugin",
   "keywords": [
     "eslint",
     "eslintplugin",
@@ -23,5 +24,5 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "license": "ISC"
+  "license": "MIT"
 }
