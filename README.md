@@ -43,9 +43,43 @@ Then configure the rules you want to use under the rules section.
 
 ## Supported Rules
 
-* TODO: make some docs
+### vue-extras/no-this-in-before-route-enter
+
+Bad:
+```vue
+<script>
+export default {
+  beforeRouteEnter() {
+    this.method()
+  }
+}
+</script>
+```
+
+In a `beforeRouteEnter` method `this` is `undefined`. Details: [link](https://router.vuejs.org/guide/advanced/navigation-guards.html#in-component-guards)
 
 
+### vue-extras/use-attribute-shortcut
 
+Bad:
+
+```vue
+<template>
+  <component :attr="true" />
+</template>
+```
+
+
+Good:
+
+```vue
+<template>
+  <component attr />
+  <component attr="true" />
+  <component :attr="false" />
+</template>
+```
+
+Force attribute shortcut. Add `--fix` flag to apply shortcut.
 
 
