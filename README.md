@@ -13,7 +13,7 @@ yar add eslint eslint-plugin-vue --dev
 Next, install `eslint-plugin-vue-extras`:
 
 ```
-yarn add eslint-plugin-vue-extra --dev
+yarn add eslint-plugin-vue-extras --dev
 ```
 
 
@@ -24,7 +24,7 @@ Add `eslint-vue-extra` to the plugins section of your `.eslintrc` configuration 
 ```json
 {
     "plugins": [
-        "eslint-vue-extra"
+        "eslint-vue-extras"
     ]
 }
 ```
@@ -35,8 +35,8 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "eslint-plugin-vue-extra/no-this-in-before-route-enter": 2,
-        "eslint-plugin-vue-extra/use-attribute-shortcut": 2
+        "vue-extras/no-this-in-before-route-enter": 2,
+        "vue-extras/use-attribute-shortcut": 2
     }
 }
 ```
