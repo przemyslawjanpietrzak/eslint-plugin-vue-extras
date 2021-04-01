@@ -7,13 +7,13 @@ Don&#39;t use &#34;this&#34; i a beforeRouteEnter method
 You'll first need to install [ESLint](http://eslint.org):
 
 ```
-npm i eslint --save-dev
+yar add eslint eslint-plugin-vue --dev
 ```
 
 Next, install `eslint-plugin-vue-extras`:
 
 ```
-npm install eslint-plugin-vue-extra --save-dev
+yarn add eslint-plugin-vue-extra --dev
 ```
 
 
@@ -35,14 +35,15 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "eslint-plugin-vue-extra/no-this-in-before-route-enter": 2
+        "eslint-plugin-vue-extra/no-this-in-before-route-enter": 2,
+        "eslint-plugin-vue-extra/use-attribute-shortcut": 2
     }
 }
 ```
 
 ## Supported Rules
 
-* Fill in provided rules here
+* TODO: make some docs
 
 
 
