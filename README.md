@@ -1,7 +1,5 @@
 # eslint-plugin-vue-extras
 
-Don&#39;t use &#34;this&#34; i a beforeRouteEnter method
-
 ## Installation
 
 You'll first need to install [ESLint](http://eslint.org):
