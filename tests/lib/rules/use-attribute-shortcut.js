@@ -40,13 +40,15 @@ ruleTester.run("use-attribute-shortcut", rule, {
             code: template('<div :attr="true"></div>'),
             errors: [{
                 message: 'Use attr instead of :attr="true"',
-            }]
+            }],
+            output: template('<div attr></div>'),
         },
         {
             code: template('<div :attr1="false" :attr2="true"></div>'),
             errors: [{
                 message: 'Use attr2 instead of :attr2="true"',
-            }]
+            }],
+            output: template('<div :attr1="false" attr2></div>'),
         }
     ]
 });
