@@ -38,12 +38,25 @@ var ruleTester = new RuleTester({
 ruleTester.run("type-complex-props", rule, {
 
     valid: [
+        `
+<script lang="ts">
+export default {
+}
+</script>  	
+    	`,
+    	`
+<script lang="ts">
+export default {
+	props: {}
+}
+</script>  	
+    	`,
+        template(''),
     	template('type: Object as Prop<{}>'),
         template('type: String'),
         template('type: Number'),
         template('type: Boolean'),
         template('type: [String, Number, Boolean]'),
-        template(''),
     ],
 
     invalid: [
