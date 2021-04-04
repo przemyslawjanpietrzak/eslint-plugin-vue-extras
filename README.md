@@ -22,7 +22,7 @@ Add `eslint-vue-extra` to the plugins section of your `.eslintrc` configuration 
 ```json
 {
     "plugins": [
-        "eslint-vue-extras"
+        "vue-extras"
     ]
 }
 ```
@@ -67,7 +67,6 @@ Bad:
 </template>
 ```
 
-
 Good:
 
 ```vue
@@ -80,4 +79,36 @@ Good:
 
 Force attribute shortcut. Add `--fix` flag to apply shortcut.
 
+## TypeScript only
 
+### vue-extras/type-object-props
+
+Bad:
+
+```vue
+<script>
+export default {
+  props: {
+    prop: {
+      type: Object // Object props has to be typed
+    }
+  }
+}
+</script>
+```
+
+Good:
+
+```vue
+<script lang="ts">
+import { Prop } from 'vue/types/options';
+
+export default {
+  props: {
+    prop: {
+      type: Object as Prop<{}>
+    }
+  }
+}
+</script>
+```
