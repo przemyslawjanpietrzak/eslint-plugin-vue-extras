@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-vue-extras",
   "author": "Przemyslaw Jan Beigert",
-  "version": "1.1.0-rc1",
+  "version": "1.1.0-rc2",
   "description": "Set of eslint rules for a vue project",
   "repository": "https://github.com/przemyslawjanpietrzak/eslint-plugin-vue-extras",
   "keywords": [
