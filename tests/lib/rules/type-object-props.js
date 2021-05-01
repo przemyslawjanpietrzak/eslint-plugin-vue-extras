@@ -4,13 +4,8 @@
  */
 "use strict";
 
-//------------------------------------------------------------------------------
-// Requirements
-//------------------------------------------------------------------------------
-
-var rule = require("../../../lib/rules/type-object-props"),
-
-    RuleTester = require("eslint").RuleTester;
+const rule = require("../../../lib/rules/type-object-props");
+const { RuleTester } = require("eslint");
 
 
 //------------------------------------------------------------------------------
@@ -52,7 +47,7 @@ export default {
 </script>  	
     	`,
         template(''),
-    	template('type: Object as Prop<{}>'),
+      	template('type: Object as Prop<{}>'),
         template('type: String'),
         template('type: Number'),
         template('type: Boolean'),

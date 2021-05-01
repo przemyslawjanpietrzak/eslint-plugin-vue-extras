@@ -17,6 +17,7 @@
     "@typescript-eslint/parser": "^4.20.0",
     "eslint-plugin-vue": "^7.8.0",
     "requireindex": "~1.1.0",
+    "typescript": "^4.2.4",
     "vue-eslint-parser": "^7.6.0"
   },
   "devDependencies": {
