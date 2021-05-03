@@ -5,7 +5,7 @@
 You'll first need to install [ESLint](http://eslint.org):
 
 ```
-yar add eslint eslint-plugin-vue --dev
+yarn add eslint eslint-plugin-vue --dev
 ```
 
 Next, install `eslint-plugin-vue-extras`:
@@ -34,7 +34,8 @@ Then configure the rules you want to use under the rules section.
 {
     "rules": {
         "vue-extras/no-this-in-before-route-enter": 2,
-        "vue-extras/use-attribute-shortcut": 2
+        "vue-extras/use-attribute-shortcut": 2,
+        "vue-extras/type-object-props": 2
     }
 }
 ```
@@ -81,12 +82,14 @@ Force attribute shortcut. Add `--fix` flag to apply shortcut.
 
 ## TypeScript only
 
-### vue-extras/type-object-props
+### vue-extras/type-object-props 
+
+* requires `@typescript-eslint/parser`
 
 Bad:
 
 ```vue
-<script>
+<script lang="ts">
 export default {
   props: {
     prop: {
