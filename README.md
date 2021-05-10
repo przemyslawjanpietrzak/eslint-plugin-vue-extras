@@ -35,7 +35,8 @@ Then configure the rules you want to use under the rules section.
     "rules": {
         "vue-extras/no-this-in-before-route-enter": 2,
         "vue-extras/use-attribute-shortcut": 2,
-        "vue-extras/type-object-props": 2
+        "vue-extras/type-object-props": 2,
+        "vue-extras/no-empty-methods": 2,
     }
 }
 ```
@@ -79,6 +80,37 @@ Good:
 ```
 
 Force attribute shortcut. Add `--fix` flag to apply shortcut.
+
+### vue-extras/no-empty-methods
+
+Bad:
+
+```vue
+export default {
+  methods: {}
+}
+```
+
+Good:
+
+```vue
+export default {
+}
+```
+
+
+```vue
+export default {
+  methods: {
+    method() {
+
+    }
+  }
+}
+```
+
+Force attribute shortcut. Add `--fix` flag to apply shortcut.
+
 
 ## TypeScript only
 
