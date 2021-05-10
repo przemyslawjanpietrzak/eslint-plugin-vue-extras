@@ -7,7 +7,7 @@
 const rule = require("../../../lib/rules/no-empty-methods");
 const { RuleTester } = require("eslint");
 
-const template = (methods) => `
+const template = (methods = '') => `
 <template>
   <p>{{ greeting }} World!</p>
 </template>
@@ -28,7 +28,7 @@ const ruleTester = new RuleTester({
 ruleTester.run("no-empty-methods", rule, {
 
     valid: [
-      template(''),
+      template(),
       template('methods: { method() {} }'),
     ],
 
@@ -37,7 +37,8 @@ ruleTester.run("no-empty-methods", rule, {
             code: template('methods: {}'),
             errors: [{
                 message: 'Remove empty methods object',
-            }]
+            }],
+            output: template(),
         }
     ]
 });
