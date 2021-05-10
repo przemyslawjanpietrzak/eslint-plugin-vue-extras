@@ -109,8 +109,37 @@ export default {
 }
 ```
 
-Force attribute shortcut. Add `--fix` flag to apply shortcut.
+Add `--fix` flag to apply shortcut.
 
+### vue-extras/no-empty-computed
+
+Bad:
+
+```vue
+export default {
+  computed: {}
+}
+```
+
+Good:
+
+```vue
+export default {
+}
+```
+
+
+```vue
+export default {
+  computed: {
+    item() {
+
+    }
+  }
+}
+```
+
+Add `--fix` flag to apply shortcut.
 
 ## TypeScript only
 
