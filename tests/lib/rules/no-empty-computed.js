@@ -39,6 +39,13 @@ ruleTester.run("no-empty-computed", rule, {
                 message: 'Remove empty computed object',
             }],
             output: template(),
-        }
+        },
+        {
+          code: template('computed: {},'),
+          errors: [{
+              message: 'Remove empty computed object',
+          }],
+          output: template(),
+      }
     ]
 });

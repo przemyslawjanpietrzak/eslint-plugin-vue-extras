@@ -39,6 +39,13 @@ ruleTester.run("no-empty-methods", rule, {
                 message: 'Remove empty methods object',
             }],
             output: template(),
-        }
+        },
+        {
+          code: template('methods: {},'),
+          errors: [{
+              message: 'Remove empty methods object',
+          }],
+          output: template(),
+      }
     ]
 });
