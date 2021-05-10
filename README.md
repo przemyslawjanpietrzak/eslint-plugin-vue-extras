@@ -37,6 +37,7 @@ Then configure the rules you want to use under the rules section.
         "vue-extras/use-attribute-shortcut": 2,
         "vue-extras/type-object-props": 2,
         "vue-extras/no-empty-methods": 2,
+        "vue-extras/no-empty-computed": 2
     }
 }
 ```
